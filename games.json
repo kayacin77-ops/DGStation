@@ -1,0 +1,448 @@
+{
+  "918kiss": [
+    {
+      "name": "A Night Out",
+      "img": "assets/games/918kiss/01-a-night-out.jpg"
+    },
+    {
+      "name": "African",
+      "img": "assets/games/918kiss/02-african.jpg"
+    },
+    {
+      "name": "Aladdin",
+      "img": "assets/games/918kiss/03-aladdin.jpg"
+    },
+    {
+      "name": "Alice",
+      "img": "assets/games/918kiss/04-alice.jpg"
+    },
+    {
+      "name": "Amazon",
+      "img": "assets/games/918kiss/05-amazon.jpg"
+    },
+    {
+      "name": "Apple Machine",
+      "img": "assets/games/918kiss/06-apple-machine.jpg"
+    },
+    {
+      "name": "Aztec",
+      "img": "assets/games/918kiss/07-aztec.jpg"
+    },
+    {
+      "name": "Baccarat",
+      "img": "assets/games/918kiss/08-baccarat.jpg"
+    },
+    {
+      "name": "BallSlots",
+      "img": "assets/games/918kiss/09-ballslots.jpg"
+    },
+    {
+      "name": "BattleWorld",
+      "img": "assets/games/918kiss/10-battleworld.jpg"
+    },
+    {
+      "name": "Belangkai",
+      "img": "assets/games/918kiss/11-belangkai.jpg"
+    },
+    {
+      "name": "Big Shot",
+      "img": "assets/games/918kiss/12-big-shot.jpg"
+    },
+    {
+      "name": "BonusBears",
+      "img": "assets/games/918kiss/13-bonusbears.jpg"
+    },
+    {
+      "name": "Boxing",
+      "img": "assets/games/918kiss/14-boxing.jpg"
+    },
+    {
+      "name": "Boyking",
+      "img": "assets/games/918kiss/15-boyking.jpg"
+    },
+    {
+      "name": "Captain",
+      "img": "assets/games/918kiss/16-captain.jpg"
+    },
+    {
+      "name": "Cherry Love",
+      "img": "assets/games/918kiss/17-cherry-love.jpg"
+    },
+    {
+      "name": "Circus",
+      "img": "assets/games/918kiss/18-circus.jpg"
+    },
+    {
+      "name": "Cleopatra",
+      "img": "assets/games/918kiss/19-cleopatra.jpg"
+    },
+    {
+      "name": "Cookie Pop",
+      "img": "assets/games/918kiss/20-cookie-pop.jpg"
+    },
+    {
+      "name": "Coyote Cash",
+      "img": "assets/games/918kiss/21-coyote-cash.jpg"
+    },
+    {
+      "name": "Crazy7",
+      "img": "assets/games/918kiss/22-crazy7.jpg"
+    },
+    {
+      "name": "Crystal",
+      "img": "assets/games/918kiss/23-crystal.jpg"
+    },
+    {
+      "name": "Da Sheng Nao Hai 10k",
+      "img": "assets/games/918kiss/24-da-sheng-nao-hai-10k.jpg"
+    },
+    {
+      "name": "Da Sheng Nao Hai",
+      "img": "assets/games/918kiss/25-da-sheng-nao-hai.jpg"
+    },
+    {
+      "name": "Dolphin Reef",
+      "img": "assets/games/918kiss/26-dolphin-reef.jpg"
+    },
+    {
+      "name": "Dolphin",
+      "img": "assets/games/918kiss/27-dolphin.jpg"
+    },
+    {
+      "name": "Dragon Gold",
+      "img": "assets/games/918kiss/28-dragon-gold.jpg"
+    },
+    {
+      "name": "Dragon Maiden",
+      "img": "assets/games/918kiss/29-dragon-maiden.jpg"
+    },
+    {
+      "name": "Dragon Tiger",
+      "img": "assets/games/918kiss/30-dragon-tiger.jpg"
+    },
+    {
+      "name": "Dragon",
+      "img": "assets/games/918kiss/31-dragon.jpg"
+    },
+    {
+      "name": "Easter",
+      "img": "assets/games/918kiss/32-easter.jpg"
+    },
+    {
+      "name": "Emperor Gate",
+      "img": "assets/games/918kiss/33-emperor-gate.jpg"
+    },
+    {
+      "name": "Fairy Garden",
+      "img": "assets/games/918kiss/34-fairy-garden.jpg"
+    },
+    {
+      "name": "Fame",
+      "img": "assets/games/918kiss/35-fame.jpg"
+    },
+    {
+      "name": "Fashion",
+      "img": "assets/games/918kiss/36-fashion.jpg"
+    },
+    {
+      "name": "FengShen",
+      "img": "assets/games/918kiss/37-fengshen.jpg"
+    },
+    {
+      "name": "Fish 10k",
+      "img": "assets/games/918kiss/38-fish-10k.jpg"
+    },
+    {
+      "name": "Fish",
+      "img": "assets/games/918kiss/39-fish.jpg"
+    },
+    {
+      "name": "Five Dragons",
+      "img": "assets/games/918kiss/40-five-dragons.jpg"
+    }
+  ],
+  "mega888": [
+    {
+      "name": "Apple Machine",
+      "img": "assets/games/mega888/01-apple-machine.jpg"
+    },
+    {
+      "name": "Aztec",
+      "img": "assets/games/mega888/02-aztec.jpg"
+    },
+    {
+      "name": "Baccarat",
+      "img": "assets/games/mega888/03-baccarat.jpg"
+    },
+    {
+      "name": "Sticky Bandits",
+      "img": "assets/games/mega888/04-sticky-bandits.jpg"
+    },
+    {
+      "name": "Battle World",
+      "img": "assets/games/mega888/05-battle-world.jpg"
+    },
+    {
+      "name": "Beast Wealth",
+      "img": "assets/games/mega888/06-beast-wealth.jpg"
+    },
+    {
+      "name": "Belangkai",
+      "img": "assets/games/mega888/07-belangkai.jpg"
+    },
+    {
+      "name": "Big Chef",
+      "img": "assets/games/mega888/08-big-chef.jpg"
+    },
+    {
+      "name": "Big Prosperity",
+      "img": "assets/games/mega888/09-big-prosperity.jpg"
+    },
+    {
+      "name": "Big Shot",
+      "img": "assets/games/mega888/10-big-shot.jpg"
+    },
+    {
+      "name": "Big Win Cat",
+      "img": "assets/games/mega888/11-big-win-cat.jpg"
+    },
+    {
+      "name": "BlackJack",
+      "img": "assets/games/mega888/12-blackjack.jpg"
+    },
+    {
+      "name": "Blaze Of Ra",
+      "img": "assets/games/mega888/13-blaze-of-ra.jpg"
+    },
+    {
+      "name": "Bonus Bears",
+      "img": "assets/games/mega888/14-bonus-bears.jpg"
+    },
+    {
+      "name": "Boxing",
+      "img": "assets/games/mega888/15-boxing.jpg"
+    },
+    {
+      "name": "Boyking",
+      "img": "assets/games/mega888/16-boyking.jpg"
+    },
+    {
+      "name": "Bulls",
+      "img": "assets/games/mega888/17-bulls.jpg"
+    },
+    {
+      "name": "Caishen's Gold",
+      "img": "assets/games/mega888/18-caishen-s-gold.jpg"
+    },
+    {
+      "name": "Conan",
+      "img": "assets/games/mega888/19-conan.jpg"
+    },
+    {
+      "name": "Captain Pro",
+      "img": "assets/games/mega888/20-captain-pro.jpg"
+    },
+    {
+      "name": "Cash Noire",
+      "img": "assets/games/mega888/21-cash-noire.jpg"
+    },
+    {
+      "name": "Cash Vandal",
+      "img": "assets/games/mega888/22-cash-vandal.jpg"
+    },
+    {
+      "name": "Casino War",
+      "img": "assets/games/mega888/23-casino-war.jpg"
+    },
+    {
+      "name": "Celebration Of Wealth",
+      "img": "assets/games/mega888/24-celebration-of-wealth.jpg"
+    },
+    {
+      "name": "Champions Rome",
+      "img": "assets/games/mega888/25-champions-rome.jpg"
+    },
+    {
+      "name": "Cherry Love",
+      "img": "assets/games/mega888/26-cherry-love.jpg"
+    },
+    {
+      "name": "Chinese Lion",
+      "img": "assets/games/mega888/27-chinese-lion.jpg"
+    },
+    {
+      "name": "Chinese New Year",
+      "img": "assets/games/mega888/28-chinese-new-year.jpg"
+    },
+    {
+      "name": "Circus",
+      "img": "assets/games/mega888/29-circus.jpg"
+    },
+    {
+      "name": "Clash Of The Beasts",
+      "img": "assets/games/mega888/30-clash-of-the-beasts.jpg"
+    },
+    {
+      "name": "Cleopatra",
+      "img": "assets/games/mega888/31-cleopatra.jpg"
+    },
+    {
+      "name": "Cleopatras Riches",
+      "img": "assets/games/mega888/32-cleopatras-riches.jpg"
+    },
+    {
+      "name": "Cocktail",
+      "img": "assets/games/mega888/33-cocktail.jpg"
+    },
+    {
+      "name": "Cookie Pop",
+      "img": "assets/games/mega888/34-cookie-pop.jpg"
+    },
+    {
+      "name": "Coyote Cash",
+      "img": "assets/games/mega888/35-coyote-cash.jpg"
+    },
+    {
+      "name": "Crystal Waters",
+      "img": "assets/games/mega888/36-crystal-waters.jpg"
+    },
+    {
+      "name": "Da Sheng Nao Hai 10k",
+      "img": "assets/games/mega888/37-da-sheng-nao-hai-10k.jpg"
+    },
+    {
+      "name": "Da Sheng Nao Hai",
+      "img": "assets/games/mega888/38-da-sheng-nao-hai.jpg"
+    },
+    {
+      "name": "Da Si Xi",
+      "img": "assets/games/mega888/39-da-si-xi.jpg"
+    },
+    {
+      "name": "Dark Vortex",
+      "img": "assets/games/mega888/40-dark-vortex.jpg"
+    }
+  ],
+  "pussy888": [
+    {
+      "name": "African Wildlife",
+      "img": "assets/games/pussy888/01-african-wildlife.jpg"
+    },
+    {
+      "name": "Aladdin",
+      "img": "assets/games/pussy888/02-aladdin.jpg"
+    },
+    {
+      "name": "Alice",
+      "img": "assets/games/pussy888/03-alice.jpg"
+    },
+    {
+      "name": "Amazon Jungle",
+      "img": "assets/games/pussy888/04-amazon-jungle.jpg"
+    },
+    {
+      "name": "Aztec",
+      "img": "assets/games/pussy888/05-aztec.jpg"
+    },
+    {
+      "name": "Banana Monkey",
+      "img": "assets/games/pussy888/06-banana-monkey.jpg"
+    },
+    {
+      "name": "Big Prosperity",
+      "img": "assets/games/pussy888/07-big-prosperity.jpg"
+    },
+    {
+      "name": "BigShot",
+      "img": "assets/games/pussy888/08-bigshot.jpg"
+    },
+    {
+      "name": "Boxing",
+      "img": "assets/games/pussy888/09-boxing.jpg"
+    },
+    {
+      "name": "Circus",
+      "img": "assets/games/pussy888/10-circus.jpg"
+    },
+    {
+      "name": "Cookie Pop",
+      "img": "assets/games/pussy888/11-cookie-pop.jpg"
+    },
+    {
+      "name": "Coyote Cash",
+      "img": "assets/games/pussy888/12-coyote-cash.jpg"
+    },
+    {
+      "name": "Diamond",
+      "img": "assets/games/pussy888/13-diamond.jpg"
+    },
+    {
+      "name": "Discovery",
+      "img": "assets/games/pussy888/14-discovery.jpg"
+    },
+    {
+      "name": "Dolphin",
+      "img": "assets/games/pussy888/15-dolphin.jpg"
+    },
+    {
+      "name": "Dlove",
+      "img": "assets/games/pussy888/16-dlove.jpg"
+    },
+    {
+      "name": "Dragon Gold",
+      "img": "assets/games/pussy888/17-dragon-gold.jpg"
+    },
+    {
+      "name": "Emperor Gate",
+      "img": "assets/games/pussy888/18-emperor-gate.jpg"
+    },
+    {
+      "name": "Fairy Garden",
+      "img": "assets/games/pussy888/19-fairy-garden.jpg"
+    },
+    {
+      "name": "Fei Long Zai Tian",
+      "img": "assets/games/pussy888/20-fei-long-zai-tian.jpg"
+    },
+    {
+      "name": "FengShen",
+      "img": "assets/games/pussy888/21-fengshen.jpg"
+    },
+    {
+      "name": "FootBall Fans",
+      "img": "assets/games/pussy888/22-football-fans.jpg"
+    },
+    {
+      "name": "FootBallRult",
+      "img": "assets/games/pussy888/23-footballrult.jpg"
+    },
+    {
+      "name": "Fortune",
+      "img": "assets/games/pussy888/24-fortune.jpg"
+    },
+    {
+      "name": "Fortune Of The Fox",
+      "img": "assets/games/pussy888/25-fortune-of-the-fox.jpg"
+    },
+    {
+      "name": "FortunePanda",
+      "img": "assets/games/pussy888/26-fortunepanda.jpg"
+    },
+    {
+      "name": "Funky Fruits",
+      "img": "assets/games/pussy888/27-funky-fruits.jpg"
+    },
+    {
+      "name": "Garden",
+      "img": "assets/games/pussy888/28-garden.jpg"
+    },
+    {
+      "name": "Geisha",
+      "img": "assets/games/pussy888/29-geisha.jpg"
+    },
+    {
+      "name": "Girls",
+      "img": "assets/games/pussy888/30-girls.jpg"
+    }
+  ]
+}
