@@ -1,1 +1,1 @@
-UPLOAD PART 1 DAHULU. Extract All, kemudian drag SEMUA isi ke root repository DGStation dan Commit changes. Selepas commit berjaya, teruskan PART 2.
+UPLOAD PART 2 SELEPAS PART 1 SUDAH COMMIT. Extract All, kemudian drag SEMUA isi ke root repository DGStation dan Commit changes.
