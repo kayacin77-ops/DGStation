@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<title>DGStation — Luxury Glowing Interactive</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#050505;min-height:100%;font-family:Arial,sans-serif}
+body{
+  background:
+    radial-gradient(circle at 15% 8%,rgba(231,183,70,.12),transparent 28%),
+    radial-gradient(circle at 85% 12%,rgba(47,111,255,.10),transparent 25%),
+    #050505;
+}
+.shell{display:flex;justify-content:center;padding:clamp(0px,2vw,24px)}
+.page{
+  width:min(100%,1024px);
+  position:relative;
+  margin:auto;
+  overflow:hidden;
+  background:#050505;
+  box-shadow:0 25px 80px rgba(0,0,0,.55);
+}
+.poster{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+
+.hotspot{
+  position:absolute;
+  display:block;
+  border-radius:14px;
+  -webkit-tap-highlight-color:transparent;
+  outline:none;
+  isolation:isolate;
+}
+
+/* LIVE / GLOW effect */
+.hotspot::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:inherit;
+  pointer-events:none;
+  opacity:.80;
+  border:1px solid rgba(255,213,105,.55);
+  box-shadow:
+    0 0 6px rgba(255,200,70,.55),
+    0 0 14px rgba(255,175,30,.32),
+    inset 0 0 12px rgba(255,210,90,.12);
+  animation:dgPulse 2.15s ease-in-out infinite;
+}
+.hotspot::after{
+  content:"";
+  position:absolute;
+  left:8%;right:8%;top:-1px;height:2px;
+  border-radius:999px;
+  pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,245,190,.95),transparent);
+  filter:drop-shadow(0 0 7px rgba(255,205,70,.95));
+  opacity:.72;
+  animation:dgScan 2.8s ease-in-out infinite;
+}
+@keyframes dgPulse{
+  0%,100%{opacity:.50;filter:brightness(.95)}
+  50%{opacity:1;filter:brightness(1.22)}
+}
+@keyframes dgScan{
+  0%,100%{transform:translateX(-16%);opacity:.35}
+  50%{transform:translateX(16%);opacity:.95}
+}
+.hotspot:active::before,
+.hotspot:focus-visible::before{
+  border-color:#fff0a2;
+  box-shadow:
+    0 0 8px #ffe07c,
+    0 0 22px rgba(255,188,37,.85),
+    0 0 38px rgba(255,156,0,.45),
+    inset 0 0 18px rgba(255,228,133,.25);
+  opacity:1;
+}
+@media(hover:hover) and (pointer:fine){
+  .hotspot:hover::before{
+    border-color:#fff2a8;
+    box-shadow:
+      0 0 8px #ffe47f,
+      0 0 22px rgba(255,190,40,.85),
+      0 0 40px rgba(255,153,0,.40),
+      inset 0 0 18px rgba(255,220,100,.22);
+    opacity:1;
+  }
+}
+
+/* Different color accents by service */
+.wa::before,.wechat::before{
+  border-color:rgba(81,255,132,.62);
+  box-shadow:0 0 7px rgba(54,255,111,.6),0 0 18px rgba(30,220,90,.32),inset 0 0 12px rgba(70,255,120,.12);
+}
+.tgcs::before,.tgch::before{
+  border-color:rgba(77,191,255,.7);
+  box-shadow:0 0 7px rgba(57,185,255,.68),0 0 18px rgba(0,138,255,.35),inset 0 0 12px rgba(70,185,255,.12);
+}
+.tiktok::before{border-color:rgba(255,72,135,.7);box-shadow:0 0 7px rgba(255,48,120,.65),0 0 18px rgba(255,30,105,.32)}
+.fb::before{border-color:rgba(67,130,255,.72);box-shadow:0 0 7px rgba(70,130,255,.7),0 0 18px rgba(50,90,255,.32)}
+.x::before{border-color:rgba(225,225,225,.62);box-shadow:0 0 7px rgba(255,255,255,.48),0 0 18px rgba(180,180,180,.22)}
+.gallery::before,.joinTop::before,.joinBottom::before,.game918::before,.gameMega::before,.gamePussy::before,.support::before{
+  border-color:rgba(255,211,91,.72);
+}
+
+/* Hotspot map */
+.home{left:24.5%;top:1.3%;width:8.5%;height:2.8%}
+.games{left:33.5%;top:1.3%;width:8.5%;height:2.8%}
+.promo{left:42.6%;top:1.3%;width:10%;height:2.8%}
+.about{left:53%;top:1.3%;width:12%;height:2.8%}
+.contactTop{left:65.3%;top:1.3%;width:10%;height:2.8%}
+.joinTop{left:84.4%;top:1.0%;width:12.5%;height:3.5%}
+
+.game918{left:4.1%;top:36.5%;width:29.4%;height:16.2%}
+.gameMega{left:35.0%;top:36.5%;width:29.3%;height:16.2%}
+.gamePussy{left:65.4%;top:36.5%;width:29.7%;height:16.2%}
+
+.wa{left:4.8%;top:56.2%;width:28.2%;height:4.7%}
+.tgcs{left:35.0%;top:56.2%;width:29.2%;height:4.7%}
+.tgch{left:65.7%;top:56.2%;width:29.1%;height:4.7%}
+.tiktok{left:4.8%;top:62.0%;width:28.2%;height:4.7%}
+.fb{left:35.0%;top:62.0%;width:29.2%;height:4.7%}
+.x{left:65.7%;top:62.0%;width:29.1%;height:4.7%}
+.wechat{left:4.8%;top:67.7%;width:28.2%;height:4.7%}
+.gallery{left:35.0%;top:67.7%;width:29.2%;height:4.7%}
+.support{left:65.7%;top:67.7%;width:29.1%;height:4.7%}
+.joinBottom{left:67.7%;top:91.8%;width:27.1%;height:4.1%}
+
+@media(max-width:699px){
+  .shell{padding:0}
+  .page{width:100vw;max-width:none;box-shadow:none}
+  .hotspot::before{inset:-1px;border-radius:9px}
+  .hotspot::after{height:1.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hotspot::before,.hotspot::after{animation:none}
+  .hotspot::before{opacity:.82}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+<main class="page">
+<img class="poster" src="assets/dgstation-home.png" alt="DGStation Luxury Landing Page">
+
+<a class="hotspot home" href="#" aria-label="Home"></a>
+<a class="hotspot games" href="#games" aria-label="Games"></a>
+<a class="hotspot promo" href="https://kayacin77-ops.github.io/promo-gallery/" target="_blank" rel="noopener" aria-label="Promosi"></a>
+<a class="hotspot about" href="#about" aria-label="Tentang Kami"></a>
+<a class="hotspot contactTop" href="https://wa.me/60168529270" target="_blank" rel="noopener" aria-label="Hubungi"></a>
+<a class="hotspot joinTop" href="https://wa.me/60168529270" target="_blank" rel="noopener" aria-label="Join Now"></a>
+
+<span id="games"></span><span id="about"></span>
+
+<a class="hotspot game918" href="https://t.me/dgstation888" target="_blank" rel="noopener" aria-label="918Kiss"></a>
+<a class="hotspot gameMega" href="https://t.me/dgstation888" target="_blank" rel="noopener" aria-label="Mega888"></a>
+<a class="hotspot gamePussy" href="https://t.me/dgstation888" target="_blank" rel="noopener" aria-label="Pussy888"></a>
+
+<a class="hotspot wa" href="https://wa.me/60168529270" target="_blank" rel="noopener" aria-label="WhatsApp CS"></a>
+<a class="hotspot tgcs" href="https://t.me/dgstation888" target="_blank" rel="noopener" aria-label="Telegram CS"></a>
+<a class="hotspot tgch" href="https://t.me/dgstation" target="_blank" rel="noopener" aria-label="Telegram Channel"></a>
+<a class="hotspot tiktok" href="https://www.tiktok.com/@hime.chelsia" target="_blank" rel="noopener" aria-label="TikTok"></a>
+<a class="hotspot fb" href="https://www.facebook.com/profile.php?id=61551561516825" target="_blank" rel="noopener" aria-label="Facebook"></a>
+<a class="hotspot x" href="https://x.com/dgstation" target="_blank" rel="noopener" aria-label="X"></a>
+<div class="hotspot wechat" role="link" tabindex="0" aria-label="WeChat ID Dgstation8" title="WeChat ID: Dgstation8"></div>
+<a class="hotspot gallery" href="https://kayacin77-ops.github.io/promo-gallery/" target="_blank" rel="noopener" aria-label="Promo Gallery"></a>
+<a class="hotspot support" href="https://wa.me/60168529270" target="_blank" rel="noopener" aria-label="Customer Support"></a>
+<a class="hotspot joinBottom" href="https://wa.me/60168529270" target="_blank" rel="noopener" aria-label="Join Now"></a>
+</main>
+</div>
+</body>
+</html>
