@@ -124,13 +124,37 @@
 .hour-note{position:absolute;z-index:21;top:51.05%;left:38%;width:24%;text-align:center;color:#ffd34f;font-size:clamp(7px,1.1vw,12px);font-weight:700;text-shadow:0 1px 3px #000}
 
 /* clickable hotspots + contained pulse */
-.hotspot{position:absolute;display:block;z-index:30;background:transparent;border:2px solid rgba(255,215,80,.40);outline:1px solid rgba(255,235,150,.22);outline-offset:-4px;overflow:hidden;border-radius:10px;box-shadow:none;-webkit-tap-highlight-color:transparent;animation:hotspotGlow 1.8s ease-in-out infinite}
-.hotspot::after{content:none}
-@keyframes hotspotGlow{0%,100%{border-color:rgba(255,215,80,.35);outline-color:rgba(255,235,150,.18)}50%{border-color:rgba(255,225,95,1);outline-color:rgba(255,245,185,.95)}}
+.hotspot{
+  position:absolute;
+  display:block;
+  z-index:30;
+  background:transparent;
+  border:1.5px solid rgba(255,215,80,.42);
+  outline:none;
+  overflow:hidden;
+  border-radius:10px;
+  box-shadow:none;
+  -webkit-tap-highlight-color:transparent;
+  cursor:pointer;
+  animation:singleBorderPulse 1.8s ease-in-out infinite;
+}
+.hotspot::after{display:none}
+.hotspot:hover,
+.hotspot:focus-visible{
+  border-color:rgba(255,235,135,1);
+}
+@keyframes singleBorderPulse{
+  0%,100%{border-color:rgba(255,215,80,.30);opacity:.78}
+  50%{border-color:rgba(255,230,120,1);opacity:1}
+}
+  50%{border-color:rgba(255,230,120,1);opacity:1}
+}50%{border-color:rgba(255,230,120,1);opacity:1}}50%{border-color:rgba(255,225,95,1);outline-color:rgba(255,245,185,.95)}}
 .wa{left:4.8%;top:56.2%;width:28.2%;height:4.7%}.tgcs{left:35%;top:56.2%;width:29.2%;height:4.7%}.tgch{left:65.7%;top:56.2%;width:29.1%;height:4.7%}
 .tiktok{left:4.8%;top:62%;width:28.2%;height:4.7%}.fb{left:35%;top:62%;width:29.2%;height:4.7%}.x{left:65.7%;top:62%;width:29.1%;height:4.7%}
 .wechat{left:4.8%;top:67.7%;width:28.2%;height:4.7%}.gallery{left:35%;top:67.7%;width:29.2%;height:4.7%}.support{left:65.7%;top:67.7%;width:29.1%;height:4.7%}
-.joinTop{left:84.7%;top:1%;width:11.8%;height:2.7%}.joinBottom{left:69%;top:92%;width:25%;height:2.8%}
+.navHome{left:24.5%;top:1.2%;width:8.2%;height:2.7%}.navGames{left:33.4%;top:1.2%;width:8.5%;height:2.7%}.navPromo{left:42.5%;top:1.2%;width:10%;height:2.7%}.navAbout{left:53%;top:1.2%;width:12%;height:2.7%}.navContact{left:65.2%;top:1.2%;width:10%;height:2.7%}
+.play918{left:7.5%;top:52.0%;width:22.0%;height:2.9%}.playMega{left:39.0%;top:52.0%;width:22.0%;height:2.9%}.playPussy{left:70.5%;top:52.0%;width:22.0%;height:2.9%}
+.joinTop{left:84.9%;top:1.05%;width:11.4%;height:2.55%;border-radius:12px}.joinBottom{left:70.2%;top:92.2%;width:23.0%;height:2.45%;border-radius:10px}
 @media(max-width:600px){.top-carousel{left:0;top:4.35%;width:100%;height:29%;border-radius:0}.navArrow{width:28px;height:46px;font-size:22px}.game-row{gap:1px}.game-card{border-radius:4px}.game-card img{transform:scale(1.18)}.angpao-float{left:58.7%;top:20.55%;width:39%;height:23.1%}}
 
 /* Local promo gallery modal */
@@ -150,6 +174,7 @@
 </head>
 <body>
 <main class="stage">
+<span id="games"></span><span id="about"></span>
   <!-- MASTER VISUAL: keseluruhan layout kekal seperti wallpaper ini -->
   <img class="base-poster" src="assets/dgstation-home.png" alt="DGStation Home">
 
@@ -166,15 +191,26 @@
   <div class="angpao-float" aria-hidden="true">
     <img src="assets/dgstation-home.png" alt="">
   </div>
-  <a class="angpao-click" href="https://kayacin77-ops.github.io/promo-gallery/" target="_blank" rel="noopener" aria-label="FREE 8.88 Angpao"></a>
+  <a class="angpao-click hotspot" href="https://kayacin77-ops.github.io/promo-gallery/" target="_blank" rel="noopener" aria-label="FREE 8.88 Angpao"></a>
   </div>
 
   <div class="game-row r918" id="games918"></div>
   <div class="game-row rmega" id="gamesMega"></div>
   <div class="game-row rpussy" id="gamesPussy"></div>
   <div class="hour-note">AUTO RANDOM • UPDATE SETIAP 1 JAM</div>
+    <a class="hotspot play918" href="https://t.me/dgstation888" target="_blank" rel="noopener" aria-label="918Kiss Play Now"></a>
+    <a class="hotspot playMega" href="https://t.me/dgstation888" target="_blank" rel="noopener" aria-label="Mega888 Play Now"></a>
+    <a class="hotspot playPussy" href="https://t.me/dgstation888" target="_blank" rel="noopener" aria-label="Pussy888 Play Now"></a>
 
-  <a class="hotspot joinTop" href="https://wa.me/60168529270" target="_blank" rel="noopener" aria-label="Join Now"></a>
+
+  
+    <a class="hotspot navHome" href="#" aria-label="Home"></a>
+    <a class="hotspot navGames" href="#games" aria-label="Games"></a>
+    <a class="hotspot navPromo" href="https://kayacin77-ops.github.io/promo-gallery/" target="_blank" rel="noopener" aria-label="Promosi"></a>
+    <a class="hotspot navAbout" href="#about" aria-label="Tentang Kami"></a>
+    <a class="hotspot navContact" href="https://wa.me/60168529270" target="_blank" rel="noopener" aria-label="Hubungi"></a>
+
+    <a class="hotspot joinTop" href="https://wa.me/60168529270" target="_blank" rel="noopener" aria-label="Join Now"></a>
   <a class="hotspot wa" href="https://wa.me/60168529270" target="_blank" rel="noopener" aria-label="WhatsApp"></a>
   <a class="hotspot tgcs" href="https://t.me/dgstation888" target="_blank" rel="noopener" aria-label="Telegram CS"></a>
   <a class="hotspot tgch" href="https://t.me/dgstation" target="_blank" rel="noopener" aria-label="Telegram Channel"></a>
