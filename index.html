@@ -6,235 +6,253 @@
 <meta name="theme-color" content="#050505">
 <title>DGStation</title>
 <style>
-*{box-sizing:border-box} html,body{margin:0;background:#050505;min-height:100%;font-family:Arial,sans-serif}
-.stage{width:min(100%,1024px);margin:auto;position:relative;background:#050505;overflow:hidden}
-.base-poster{display:block;width:100%;height:auto;background:#050505;user-select:none;-webkit-user-drag:none}
+:root {
+  --bg:#050505;
+  --panel:#0b0b0b;
+  --gold:#ffd34f;
+  --gold2:#e7ad21;
+  --text:#fff;
+  --muted:#bbb;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:min(1180px,100%);margin:auto;padding:0 14px}
 
-/* HERO AUTO SLIDER — hanya bahagian atas, layout lain kekal */
-.top-carousel{
-  position:absolute;
-  left:2.8%;
-  top:4.35%;
-  width:94.4%;
-  height:29.0%;
-  z-index:14;
-  overflow:hidden;
-  border-radius:14px;
-  background:transparent;
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(5,5,5,.94);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,211,79,.25)
 }
-.hero-slide{
-  position:absolute;
-  inset:0;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .75s ease;
-  overflow:hidden;
-  border-radius:inherit;
-  background:transparent;
+.nav{height:68px;display:flex;align-items:center;gap:22px}
+.logo{font-weight:900;font-size:28px;color:var(--gold);letter-spacing:.3px;white-space:nowrap}
+.logo span{color:#27a7ff}
+.navlinks{margin-left:auto;display:flex;gap:18px;align-items:center}
+.navlinks a{font-size:14px;color:#eee;padding:10px 6px}
+.join-btn,.cta-btn,.play-btn{
+  border:1.5px solid var(--gold);
+  background:linear-gradient(180deg,#ffd75c,#d89b14);
+  color:#111;font-weight:900;border-radius:10px;
+  padding:11px 18px;cursor:pointer
 }
+.menu-btn{display:none;margin-left:auto;background:transparent;color:#fff;border:1px solid #555;border-radius:8px;padding:8px 10px}
+
+.hero{
+  margin-top:14px;position:relative;overflow:hidden;
+  border:1px solid rgba(255,211,79,.35);border-radius:20px;background:#0a0a0a;
+}
+.hero-stage{position:relative;aspect-ratio:16/7;min-height:310px}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
 .hero-slide.active{opacity:1;pointer-events:auto}
-.hero-slide.home-hero{background:transparent}
-.hero-slide.promo-hero{background:#050505}
-.hero-slide.promo-hero img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  display:block;
+.hero-slide img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.58),rgba(0,0,0,.08) 56%,rgba(0,0,0,.18));
+  pointer-events:none
 }
-.dots{
-  position:absolute;
-  left:0;right:0;bottom:2.4%;
-  display:flex;justify-content:center;gap:8px;
-  z-index:50
+.hero-copy{
+  position:absolute;left:5%;top:50%;transform:translateY(-50%);
+  width:min(470px,52%);z-index:4
 }
-.dot{
-  width:9px;height:9px;
-  border:1px solid rgba(255,215,80,.78);
-  border-radius:50%;
-  background:rgba(0,0,0,.58);
-  opacity:.95;padding:0;cursor:pointer
+.hero-copy h1{margin:0;color:var(--gold);font-size:clamp(34px,6vw,76px);line-height:.95}
+.hero-copy p{font-size:clamp(14px,1.6vw,20px);margin:16px 0 20px;color:#eee}
+.hero-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:7;
+  width:44px;height:60px;border:1px solid var(--gold);
+  background:rgba(0,0,0,.5);color:var(--gold);font-size:30px;border-radius:12px;cursor:pointer
 }
-.dot.active{background:#ffd34f;transform:scale(1.25)}
-.navArrow{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  z-index:55;
-  width:34px;height:52px;
-  border:1px solid rgba(255,215,80,.78);
-  border-radius:10px;
-  background:rgba(0,0,0,.48);
-  color:#ffd34f;
-  font-size:28px;
-  cursor:pointer;
-  box-shadow:none
-}
-.prev{left:1%}.next{right:1%}
+.hero-prev{left:14px} .hero-next{right:14px}
+.hero-dots{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;gap:8px;z-index:8}
+.hero-dot{width:10px;height:10px;border-radius:50%;border:1px solid var(--gold);background:#111;cursor:pointer}
+.hero-dot.active{background:var(--gold)}
 
-/* FREE 8.88 kekal terapung di kanan walaupun hero bertukar slide.
-   Ini ialah crop daripada wallpaper utama supaya rupa kekal sama. */
-.angpao-float{
-  position:absolute;
-  left:58.7%;
-  top:20.55%;
-  width:39.0%;
-  height:23.1%;
-  z-index:28;
-  overflow:hidden;
-  pointer-events:none;
-  animation:angpaoFloat 2.6s ease-in-out infinite;
+.angpao{
+  position:absolute;right:2.5%;bottom:5%;z-index:9;
+  width:min(220px,25%);aspect-ratio:1.25/1;
+  border:1.5px solid rgba(255,210,60,.75);
+  border-radius:18px;overflow:hidden;
+  background:radial-gradient(circle at center,#8e1b00,#290000 68%);
+  display:grid;place-items:center;text-align:center;
+  animation:float 2.4s ease-in-out infinite
 }
-.angpao-float img{
-  position:absolute;
-  width:256.41%;
-  max-width:none;
-  height:auto;
-  left:-150.51%;
-  top:-88.96%;
-  user-select:none;
-  -webkit-user-drag:none;
-}
-@keyframes angpaoFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-4px)}
-}
-.angpao-click{
-  position:absolute;
-  left:59.2%;
-  top:20.9%;
-  width:38.0%;
-  height:22.2%;
-  z-index:31;
-  border:0;
-  outline:0;
-  background:transparent;
-  border-radius:16px;
-  -webkit-tap-highlight-color:transparent;
-}
+.angpao strong{display:block;font-size:clamp(24px,4vw,46px);color:#ffd34f}
+.angpao small{display:block;color:#fff;font-weight:700}
+@keyframes float{50%{transform:translateY(-6px)}}
 
-/* Dynamic hourly games — page kekal statik */
-.game-row{position:absolute;z-index:20;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5%;height:8.8%;top:42.55%}
-.game-row.r918{left:5.1%;width:27.1%}
-.game-row.rmega{left:36.6%;width:27.1%}
-.game-row.rpussy{left:68.1%;width:27.1%}
-.game-card{background:#080808;border:1px solid rgba(255,211,79,.78);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;align-items:stretch;box-shadow:none}
-.game-card img{width:100%;height:72%;object-fit:cover;object-position:center;display:block;background:#080808;transform:scale(1.16);transform-origin:center}
-.game-card .name{height:28%;display:flex;align-items:center;justify-content:center;text-align:center;color:#ffd84f;font-weight:800;font-size:clamp(6px,1vw,11px);line-height:1.05;padding:1px 2px;background:rgba(0,0,0,.94)}
-.hour-note{position:absolute;z-index:21;top:51.05%;left:38%;width:24%;text-align:center;color:#ffd34f;font-size:clamp(7px,1.1vw,12px);font-weight:700;text-shadow:0 1px 3px #000}
-
-/* clickable hotspots + contained pulse */
-.hotspot{
-  position:absolute;
-  display:block;
-  z-index:30;
-  background:transparent;
-  border:1.5px solid rgba(255,215,80,.42);
-  outline:none;
-  overflow:hidden;
-  border-radius:10px;
-  box-shadow:none;
-  -webkit-tap-highlight-color:transparent;
-  cursor:pointer;
-  animation:singleBorderPulse 1.8s ease-in-out infinite;
+.section{padding:34px 0}
+.section-title{text-align:center;color:var(--gold);font-size:28px;margin:0 0 18px;font-weight:900}
+.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.platform{
+  border:1px solid rgba(255,211,79,.35);border-radius:18px;padding:16px;background:#0a0a0a;
 }
-.hotspot::after{display:none}
-.hotspot:hover,
-.hotspot:focus-visible{
-  border-color:rgba(255,235,135,1);
+.platform h3{margin:0 0 12px;text-align:center;font-size:24px}
+.platform.918 h3{color:#ff7fbe} .platform.mega h3{color:#28a8ff} .platform.pussy h3{color:#c27cff}
+.game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.game-card{background:#090909;border:1px solid rgba(255,211,79,.3);border-radius:10px;overflow:hidden}
+.game-card img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#080808}
+.game-card .name{padding:8px 6px;text-align:center;color:var(--gold);font-weight:800;font-size:12px}
+.play-btn{display:block;text-align:center;margin-top:14px;padding:10px 14px}
+.hour-note{text-align:center;color:var(--gold);font-size:12px;margin-top:10px}
+
+.social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.social{
+  position:relative;border-radius:14px;padding:14px 16px;background:#101010;min-height:74px;
+  border:1px solid rgba(255,211,79,.32);overflow:hidden
 }
-@keyframes singleBorderPulse{
-  0%,100%{border-color:rgba(255,215,80,.30);opacity:.78}
-  50%{border-color:rgba(255,230,120,1);opacity:1}
+.social::after{
+  content:"";position:absolute;inset:2px;border-radius:12px;border:1.5px solid rgba(255,215,80,.35);
+  animation:borderPulse 1.8s ease-in-out infinite;pointer-events:none
 }
-  50%{border-color:rgba(255,230,120,1);opacity:1}
-}50%{border-color:rgba(255,230,120,1);opacity:1}}50%{border-color:rgba(255,225,95,1);outline-color:rgba(255,245,185,.95)}}
-.wa{left:4.8%;top:56.2%;width:28.2%;height:4.7%}.tgcs{left:35%;top:56.2%;width:29.2%;height:4.7%}.tgch{left:65.7%;top:56.2%;width:29.1%;height:4.7%}
-.tiktok{left:4.8%;top:62%;width:28.2%;height:4.7%}.fb{left:35%;top:62%;width:29.2%;height:4.7%}.x{left:65.7%;top:62%;width:29.1%;height:4.7%}
-.wechat{left:4.8%;top:67.7%;width:28.2%;height:4.7%}.gallery{left:35%;top:67.7%;width:29.2%;height:4.7%}.support{left:65.7%;top:67.7%;width:29.1%;height:4.7%}
-.navHome{left:24.5%;top:1.2%;width:8.2%;height:2.7%}.navGames{left:33.4%;top:1.2%;width:8.5%;height:2.7%}.navPromo{left:42.5%;top:1.2%;width:10%;height:2.7%}.navAbout{left:53%;top:1.2%;width:12%;height:2.7%}.navContact{left:65.2%;top:1.2%;width:10%;height:2.7%}
-.play918{left:7.5%;top:52.0%;width:22.0%;height:2.9%}.playMega{left:39.0%;top:52.0%;width:22.0%;height:2.9%}.playPussy{left:70.5%;top:52.0%;width:22.0%;height:2.9%}
-.joinTop{left:84.9%;top:1.05%;width:11.4%;height:2.55%;border-radius:12px}.joinBottom{left:70.2%;top:92.2%;width:23.0%;height:2.45%;border-radius:10px}
-@media(max-width:600px){.top-carousel{left:0;top:4.35%;width:100%;height:29%;border-radius:0}.navArrow{width:28px;height:46px;font-size:22px}.game-row{gap:1px}.game-card{border-radius:4px}.game-card img{transform:scale(1.18)}.angpao-float{left:58.7%;top:20.55%;width:39%;height:23.1%}}
+@keyframes borderPulse{0%,100%{border-color:rgba(255,215,80,.28)}50%{border-color:rgba(255,230,120,1)}}
+.social b{display:block;font-size:16px;margin-bottom:4px} .social span{color:#d5d5d5;font-size:13px}
 
-/* Local promo gallery modal */
-.gallery-modal{position:absolute;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.88);padding:4%}
-.gallery-modal.open{display:flex}
-.gallery-box{position:relative;width:min(94%,900px);max-height:92%;display:flex;flex-direction:column;align-items:center;gap:12px}
-.gallery-img{max-width:100%;max-height:78%;object-fit:contain;border-radius:14px;box-shadow:0 0 28px rgba(255,195,40,.28);background:#111}
-.gallery-close,.gallery-prev,.gallery-next{border:0;background:rgba(0,0,0,.72);color:#ffd34f;cursor:pointer}
-.gallery-close{position:absolute;right:0;top:-46px;width:42px;height:42px;border-radius:50%;font-size:26px}
-.gallery-controls{display:flex;gap:12px;align-items:center}
-.gallery-prev,.gallery-next{width:54px;height:42px;border-radius:10px;font-size:28px}
-.gallery-count{color:#fff;font-weight:700;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;background:#0b0b0b;border:1px solid rgba(255,211,79,.35);border-radius:16px;padding:16px}
+.stat{text-align:center} .stat strong{display:block;color:var(--gold);font-size:26px} .stat span{color:#bbb;font-size:12px}
 
+.promo-strip{position:relative}
+.promo-track{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.promo-card{border-radius:14px;overflow:hidden;border:1px solid rgba(255,211,79,.35);background:#111}
+.promo-card img{width:100%;aspect-ratio:16/9;object-fit:cover}
 
+.cta{margin-top:28px;border:1px solid rgba(255,211,79,.35);border-radius:18px;padding:22px;display:flex;align-items:center;gap:18px;background:#0a0a0a}
+.cta-copy{flex:1} .cta-copy h2{margin:0;color:var(--gold);font-size:28px} .cta-copy p{margin:6px 0 0;color:#ddd}
+footer{padding:24px 0 38px;color:#888;font-size:12px;text-align:center}
 
+@media(max-width:900px){
+  .navlinks{display:none} .menu-btn{display:block}
+  .hero-stage{aspect-ratio:4/3;min-height:380px}
+  .hero-copy{width:60%}
+  .platform-grid{grid-template-columns:1fr}
+  .social-grid{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .promo-track{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .wrap{padding:0 10px} .nav{height:60px}
+  .logo{font-size:22px}
+  .hero-stage{aspect-ratio:3/4;min-height:470px}
+  .hero-copy{left:6%;top:37%;width:78%}
+  .hero-copy h1{font-size:44px}
+  .hero-slide img{object-position:center}
+  .angpao{width:38%;right:4%;bottom:4%}
+  .social-grid{grid-template-columns:1fr}
+  .promo-track{grid-template-columns:1fr}
+  .cta{flex-direction:column;align-items:stretch;text-align:center}
+}
 </style>
 </head>
 <body>
-<main class="stage">
-<span id="games"></span><span id="about"></span>
-  <!-- MASTER VISUAL: keseluruhan layout kekal seperti wallpaper ini -->
-  <img class="base-poster" src="assets/dgstation-home.png" alt="DGStation Home">
-
-  <div class="top-carousel" id="topCarousel" aria-label="DGStation Promosi Atas">
-    <section class="hero-slide home-hero active" aria-label="DGStation Home"></section>
-    <section class="hero-slide promo-hero"><img src="assets/promos/promo1.png" alt="Welcome Bonus 50%"></section>
-    <section class="hero-slide promo-hero"><img src="assets/promos/promo2.png" alt="Welcome Back 50%"></section>
-    <section class="hero-slide promo-hero"><img src="assets/promos/promo3.png" alt="Weekend Bonus 20%"></section>
-    <button class="navArrow prev" aria-label="Sebelum">‹</button>
-    <button class="navArrow next" aria-label="Seterusnya">›</button>
-    <div class="dots"><button class="dot active"></button><button class="dot"></button><button class="dot"></button><button class="dot"></button></div>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#home"><span>DG</span>Station</a>
+    <nav class="navlinks">
+      <a href="#home">HOME</a>
+      <a href="#games">GAMES</a>
+      <a href="#promosi">PROMOSI</a>
+      <a href="#about">TENTANG KAMI</a>
+      <a href="#contact">HUBUNGI</a>
+    </nav>
+    <a class="join-btn" href="https://wa.me/60168529270" target="_blank" rel="noopener">JOIN NOW</a>
+    <button class="menu-btn" type="button" aria-label="Menu">☰</button>
   </div>
+</header>
 
-  <div class="angpao-float" aria-hidden="true">
-    <img src="assets/dgstation-home.png" alt="">
+<main>
+<section class="wrap hero" id="home">
+  <div class="hero-stage" id="heroSlider">
+    <div class="hero-slide active"><img src="assets/dgstation-home.png" alt="DGStation"></div>
+    <div class="hero-slide"><img src="assets/promos/promo1.png" alt="Promosi 1"></div>
+    <div class="hero-slide"><img src="assets/promos/promo2.png" alt="Promosi 2"></div>
+    <div class="hero-slide"><img src="assets/promos/promo3.png" alt="Promosi 3"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-copy">
+      <h1>PLAY SMART<br>WIN BIG!</h1>
+      <p>DGStation — semua platform, promosi dan customer service dalam satu hub.</p>
+      <a class="cta-btn" href="#games">LIHAT GAME</a>
+    </div>
+    <button class="hero-arrow hero-prev" type="button" aria-label="Sebelum">‹</button>
+    <button class="hero-arrow hero-next" type="button" aria-label="Seterusnya">›</button>
+    <div class="hero-dots">
+      <button class="hero-dot active"></button><button class="hero-dot"></button><button class="hero-dot"></button><button class="hero-dot"></button>
+    </div>
+    <a class="angpao" href="https://kayacin77-ops.github.io/promo-gallery/" target="_blank" rel="noopener">
+      <div><small>PERCUMA</small><strong>FREE 8.88</strong><small>ANGPAO HARIAN</small></div>
+    </a>
   </div>
-  <a class="angpao-click hotspot" href="https://kayacin77-ops.github.io/promo-gallery/" target="_blank" rel="noopener" aria-label="FREE 8.88 Angpao"></a>
+</section>
+
+<section class="section" id="games">
+  <div class="wrap">
+    <h2 class="section-title">GAME PLATFORM</h2>
+    <div class="platform-grid">
+      <article class="platform 918">
+        <h3>918Kiss</h3><div class="game-grid" id="games918"></div>
+        <a class="play-btn" href="https://t.me/dgstation888" target="_blank" rel="noopener">PLAY NOW</a>
+      </article>
+      <article class="platform mega">
+        <h3>MEGA888</h3><div class="game-grid" id="gamesMega"></div>
+        <a class="play-btn" href="https://t.me/dgstation888" target="_blank" rel="noopener">PLAY NOW</a>
+      </article>
+      <article class="platform pussy">
+        <h3>PUSSY888</h3><div class="game-grid" id="gamesPussy"></div>
+        <a class="play-btn" href="https://t.me/dgstation888" target="_blank" rel="noopener">PLAY NOW</a>
+      </article>
+    </div>
+    <div class="hour-note">AUTO RANDOM • UPDATE SETIAP 1 JAM</div>
   </div>
+</section>
 
-  <div class="game-row r918" id="games918"></div>
-  <div class="game-row rmega" id="gamesMega"></div>
-  <div class="game-row rpussy" id="gamesPussy"></div>
-  <div class="hour-note">AUTO RANDOM • UPDATE SETIAP 1 JAM</div>
-    <a class="hotspot play918" href="https://t.me/dgstation888" target="_blank" rel="noopener" aria-label="918Kiss Play Now"></a>
-    <a class="hotspot playMega" href="https://t.me/dgstation888" target="_blank" rel="noopener" aria-label="Mega888 Play Now"></a>
-    <a class="hotspot playPussy" href="https://t.me/dgstation888" target="_blank" rel="noopener" aria-label="Pussy888 Play Now"></a>
-
-
-  
-    <a class="hotspot navHome" href="#" aria-label="Home"></a>
-    <a class="hotspot navGames" href="#games" aria-label="Games"></a>
-    <a class="hotspot navPromo" href="https://kayacin77-ops.github.io/promo-gallery/" target="_blank" rel="noopener" aria-label="Promosi"></a>
-    <a class="hotspot navAbout" href="#about" aria-label="Tentang Kami"></a>
-    <a class="hotspot navContact" href="https://wa.me/60168529270" target="_blank" rel="noopener" aria-label="Hubungi"></a>
-
-    <a class="hotspot joinTop" href="https://wa.me/60168529270" target="_blank" rel="noopener" aria-label="Join Now"></a>
-  <a class="hotspot wa" href="https://wa.me/60168529270" target="_blank" rel="noopener" aria-label="WhatsApp"></a>
-  <a class="hotspot tgcs" href="https://t.me/dgstation888" target="_blank" rel="noopener" aria-label="Telegram CS"></a>
-  <a class="hotspot tgch" href="https://t.me/dgstation" target="_blank" rel="noopener" aria-label="Telegram Channel"></a>
-  <a class="hotspot tiktok" href="https://www.tiktok.com/@hime.chelsia" target="_blank" rel="noopener" aria-label="TikTok"></a>
-  <a class="hotspot fb" href="https://www.facebook.com/profile.php?id=61551561516825" target="_blank" rel="noopener" aria-label="Facebook"></a>
-  <a class="hotspot x" href="https://x.com/dgstation" target="_blank" rel="noopener" aria-label="X"></a>
-  <div class="hotspot wechat" title="WeChat ID: Dgstation8" aria-label="WeChat"></div>
-  <button class="hotspot gallery" id="openGallery" type="button" aria-label="Promo Gallery"></button>
-  <a class="hotspot support" href="https://wa.me/60168529270" target="_blank" rel="noopener" aria-label="Customer Support"></a>
-  <a class="hotspot joinBottom" href="https://wa.me/60168529270" target="_blank" rel="noopener" aria-label="Join Now"></a>
-
-<div class="gallery-modal" id="galleryModal" aria-hidden="true">
-  <div class="gallery-box" role="dialog" aria-modal="true" aria-label="DGStation Promo Gallery">
-    <button class="gallery-close" id="closeGallery" type="button" aria-label="Tutup">×</button>
-    <img class="gallery-img" id="galleryImg" src="assets/promos/promo1.png" alt="DGStation Promo">
-    <div class="gallery-controls">
-      <button class="gallery-prev" id="galleryPrev" type="button" aria-label="Sebelum">‹</button>
-      <span class="gallery-count" id="galleryCount">1 / 3</span>
-      <button class="gallery-next" id="galleryNext" type="button" aria-label="Seterusnya">›</button>
+<section class="section" id="contact">
+  <div class="wrap">
+    <h2 class="section-title">FOLLOW & JOIN US</h2>
+    <div class="social-grid">
+      <a class="social" href="https://wa.me/60168529270" target="_blank"><b>WhatsApp CS</b><span>+60168529270</span></a>
+      <a class="social" href="https://t.me/dgstation888" target="_blank"><b>Telegram CS</b><span>t.me/dgstation888</span></a>
+      <a class="social" href="https://t.me/dgstation" target="_blank"><b>Telegram Channel</b><span>t.me/dgstation</span></a>
+      <a class="social" href="https://www.tiktok.com/@hime.chelsia" target="_blank"><b>TikTok</b><span>hime.chelsia</span></a>
+      <a class="social" href="https://www.facebook.com/profile.php?id=61551561516825" target="_blank"><b>Facebook</b><span>Hime Chelsia</span></a>
+      <a class="social" href="https://x.com/dgstation" target="_blank"><b>X (Twitter)</b><span>@dgstation</span></a>
+      <div class="social"><b>WeChat</b><span>Dgstation8</span></div>
+      <a class="social" href="https://kayacin77-ops.github.io/promo-gallery/" target="_blank"><b>Promo Gallery</b><span>Lihat Semua Poster</span></a>
+      <a class="social" href="https://wa.me/60168529270" target="_blank"><b>Customer Support</b><span>Kami Sedia Membantu</span></a>
     </div>
   </div>
-</div>
+</section>
 
+<section class="section">
+  <div class="wrap stats">
+    <div class="stat"><strong>50K+</strong><span>MEMBER AKTIF</span></div>
+    <div class="stat"><strong>24/7</strong><span>LIVE SUPPORT</span></div>
+    <div class="stat"><strong>100%</strong><span>TRUSTED & SAFE</span></div>
+    <div class="stat"><strong>0</strong><span>HIDDEN FEES</span></div>
+  </div>
+</section>
+
+<section class="section" id="promosi">
+  <div class="wrap">
+    <h2 class="section-title">PROMOSI TERKINI</h2>
+    <div class="promo-strip">
+      <div class="promo-track">
+        <a class="promo-card" href="https://kayacin77-ops.github.io/promo-gallery/" target="_blank"><img src="assets/promos/promo1.png" alt="Promo 1"></a>
+        <a class="promo-card" href="https://kayacin77-ops.github.io/promo-gallery/" target="_blank"><img src="assets/promos/promo2.png" alt="Promo 2"></a>
+        <a class="promo-card" href="https://kayacin77-ops.github.io/promo-gallery/" target="_blank"><img src="assets/promos/promo3.png" alt="Promo 3"></a>
+        <a class="promo-card" href="https://t.me/dgstation888" target="_blank"><img src="assets/dgstation-home.png" alt="DGStation"></a>
+      </div>
+    </div>
+
+    <div class="cta" id="about">
+      <div class="cta-copy"><h2>Main Cerdik, Menang Besar</h2><p>BERSAMA DGSTATION!</p></div>
+      <a class="join-btn" href="https://wa.me/60168529270" target="_blank">JOIN NOW</a>
+    </div>
+  </div>
+</section>
 </main>
+
+<footer>© 2026 DGStation. All Rights Reserved.</footer>
+
 <script>
 const GAME_DATA = {"918kiss": [{"name": "A Night Out", "img": "assets/games/918kiss/01-a-night-out.jpg"}, {"name": "African", "img": "assets/games/918kiss/02-african.jpg"}, {"name": "Aladdin", "img": "assets/games/918kiss/03-aladdin.jpg"}, {"name": "Alice", "img": "assets/games/918kiss/04-alice.jpg"}, {"name": "Amazon", "img": "assets/games/918kiss/05-amazon.jpg"}, {"name": "Apple Machine", "img": "assets/games/918kiss/06-apple-machine.jpg"}, {"name": "Aztec", "img": "assets/games/918kiss/07-aztec.jpg"}, {"name": "Baccarat", "img": "assets/games/918kiss/08-baccarat.jpg"}, {"name": "BallSlots", "img": "assets/games/918kiss/09-ballslots.jpg"}, {"name": "BattleWorld", "img": "assets/games/918kiss/10-battleworld.jpg"}, {"name": "Belangkai", "img": "assets/games/918kiss/11-belangkai.jpg"}, {"name": "Big Shot", "img": "assets/games/918kiss/12-big-shot.jpg"}, {"name": "BonusBears", "img": "assets/games/918kiss/13-bonusbears.jpg"}, {"name": "Boxing", "img": "assets/games/918kiss/14-boxing.jpg"}, {"name": "Boyking", "img": "assets/games/918kiss/15-boyking.jpg"}, {"name": "Captain", "img": "assets/games/918kiss/16-captain.jpg"}, {"name": "Cherry Love", "img": "assets/games/918kiss/17-cherry-love.jpg"}, {"name": "Circus", "img": "assets/games/918kiss/18-circus.jpg"}, {"name": "Cleopatra", "img": "assets/games/918kiss/19-cleopatra.jpg"}, {"name": "Cookie Pop", "img": "assets/games/918kiss/20-cookie-pop.jpg"}, {"name": "Coyote Cash", "img": "assets/games/918kiss/21-coyote-cash.jpg"}, {"name": "Crazy7", "img": "assets/games/918kiss/22-crazy7.jpg"}, {"name": "Crystal", "img": "assets/games/918kiss/23-crystal.jpg"}, {"name": "Da Sheng Nao Hai 10k", "img": "assets/games/918kiss/24-da-sheng-nao-hai-10k.jpg"}, {"name": "Da Sheng Nao Hai", "img": "assets/games/918kiss/25-da-sheng-nao-hai.jpg"}, {"name": "Dolphin Reef", "img": "assets/games/918kiss/26-dolphin-reef.jpg"}, {"name": "Dolphin", "img": "assets/games/918kiss/27-dolphin.jpg"}, {"name": "Dragon Gold", "img": "assets/games/918kiss/28-dragon-gold.jpg"}, {"name": "Dragon Maiden", "img": "assets/games/918kiss/29-dragon-maiden.jpg"}, {"name": "Dragon Tiger", "img": "assets/games/918kiss/30-dragon-tiger.jpg"}, {"name": "Dragon", "img": "assets/games/918kiss/31-dragon.jpg"}, {"name": "Easter", "img": "assets/games/918kiss/32-easter.jpg"}, {"name": "Emperor Gate", "img": "assets/games/918kiss/33-emperor-gate.jpg"}, {"name": "Fairy Garden", "img": "assets/games/918kiss/34-fairy-garden.jpg"}, {"name": "Fame", "img": "assets/games/918kiss/35-fame.jpg"}, {"name": "Fashion", "img": "assets/games/918kiss/36-fashion.jpg"}, {"name": "FengShen", "img": "assets/games/918kiss/37-fengshen.jpg"}, {"name": "Fish 10k", "img": "assets/games/918kiss/38-fish-10k.jpg"}, {"name": "Fish", "img": "assets/games/918kiss/39-fish.jpg"}, {"name": "Five Dragons", "img": "assets/games/918kiss/40-five-dragons.jpg"}], "mega888": [{"name": "Apple Machine", "img": "assets/games/mega888/01-apple-machine.jpg"}, {"name": "Aztec", "img": "assets/games/mega888/02-aztec.jpg"}, {"name": "Baccarat", "img": "assets/games/mega888/03-baccarat.jpg"}, {"name": "Sticky Bandits", "img": "assets/games/mega888/04-sticky-bandits.jpg"}, {"name": "Battle World", "img": "assets/games/mega888/05-battle-world.jpg"}, {"name": "Beast Wealth", "img": "assets/games/mega888/06-beast-wealth.jpg"}, {"name": "Belangkai", "img": "assets/games/mega888/07-belangkai.jpg"}, {"name": "Big Chef", "img": "assets/games/mega888/08-big-chef.jpg"}, {"name": "Big Prosperity", "img": "assets/games/mega888/09-big-prosperity.jpg"}, {"name": "Big Shot", "img": "assets/games/mega888/10-big-shot.jpg"}, {"name": "Big Win Cat", "img": "assets/games/mega888/11-big-win-cat.jpg"}, {"name": "BlackJack", "img": "assets/games/mega888/12-blackjack.jpg"}, {"name": "Blaze Of Ra", "img": "assets/games/mega888/13-blaze-of-ra.jpg"}, {"name": "Bonus Bears", "img": "assets/games/mega888/14-bonus-bears.jpg"}, {"name": "Boxing", "img": "assets/games/mega888/15-boxing.jpg"}, {"name": "Boyking", "img": "assets/games/mega888/16-boyking.jpg"}, {"name": "Bulls", "img": "assets/games/mega888/17-bulls.jpg"}, {"name": "Caishen's Gold", "img": "assets/games/mega888/18-caishen-s-gold.jpg"}, {"name": "Conan", "img": "assets/games/mega888/19-conan.jpg"}, {"name": "Captain Pro", "img": "assets/games/mega888/20-captain-pro.jpg"}, {"name": "Cash Noire", "img": "assets/games/mega888/21-cash-noire.jpg"}, {"name": "Cash Vandal", "img": "assets/games/mega888/22-cash-vandal.jpg"}, {"name": "Casino War", "img": "assets/games/mega888/23-casino-war.jpg"}, {"name": "Celebration Of Wealth", "img": "assets/games/mega888/24-celebration-of-wealth.jpg"}, {"name": "Champions Rome", "img": "assets/games/mega888/25-champions-rome.jpg"}, {"name": "Cherry Love", "img": "assets/games/mega888/26-cherry-love.jpg"}, {"name": "Chinese Lion", "img": "assets/games/mega888/27-chinese-lion.jpg"}, {"name": "Chinese New Year", "img": "assets/games/mega888/28-chinese-new-year.jpg"}, {"name": "Circus", "img": "assets/games/mega888/29-circus.jpg"}, {"name": "Clash Of The Beasts", "img": "assets/games/mega888/30-clash-of-the-beasts.jpg"}, {"name": "Cleopatra", "img": "assets/games/mega888/31-cleopatra.jpg"}, {"name": "Cleopatras Riches", "img": "assets/games/mega888/32-cleopatras-riches.jpg"}, {"name": "Cocktail", "img": "assets/games/mega888/33-cocktail.jpg"}, {"name": "Cookie Pop", "img": "assets/games/mega888/34-cookie-pop.jpg"}, {"name": "Coyote Cash", "img": "assets/games/mega888/35-coyote-cash.jpg"}, {"name": "Crystal Waters", "img": "assets/games/mega888/36-crystal-waters.jpg"}, {"name": "Da Sheng Nao Hai 10k", "img": "assets/games/mega888/37-da-sheng-nao-hai-10k.jpg"}, {"name": "Da Sheng Nao Hai", "img": "assets/games/mega888/38-da-sheng-nao-hai.jpg"}, {"name": "Da Si Xi", "img": "assets/games/mega888/39-da-si-xi.jpg"}, {"name": "Dark Vortex", "img": "assets/games/mega888/40-dark-vortex.jpg"}], "pussy888": [{"name": "African Wildlife", "img": "assets/games/pussy888/01-african-wildlife.jpg"}, {"name": "Aladdin", "img": "assets/games/pussy888/02-aladdin.jpg"}, {"name": "Alice", "img": "assets/games/pussy888/03-alice.jpg"}, {"name": "Amazon Jungle", "img": "assets/games/pussy888/04-amazon-jungle.jpg"}, {"name": "Aztec", "img": "assets/games/pussy888/05-aztec.jpg"}, {"name": "Banana Monkey", "img": "assets/games/pussy888/06-banana-monkey.jpg"}, {"name": "Big Prosperity", "img": "assets/games/pussy888/07-big-prosperity.jpg"}, {"name": "BigShot", "img": "assets/games/pussy888/08-bigshot.jpg"}, {"name": "Boxing", "img": "assets/games/pussy888/09-boxing.jpg"}, {"name": "Circus", "img": "assets/games/pussy888/10-circus.jpg"}, {"name": "Cookie Pop", "img": "assets/games/pussy888/11-cookie-pop.jpg"}, {"name": "Coyote Cash", "img": "assets/games/pussy888/12-coyote-cash.jpg"}, {"name": "Diamond", "img": "assets/games/pussy888/13-diamond.jpg"}, {"name": "Discovery", "img": "assets/games/pussy888/14-discovery.jpg"}, {"name": "Dolphin", "img": "assets/games/pussy888/15-dolphin.jpg"}, {"name": "Dlove", "img": "assets/games/pussy888/16-dlove.jpg"}, {"name": "Dragon Gold", "img": "assets/games/pussy888/17-dragon-gold.jpg"}, {"name": "Emperor Gate", "img": "assets/games/pussy888/18-emperor-gate.jpg"}, {"name": "Fairy Garden", "img": "assets/games/pussy888/19-fairy-garden.jpg"}, {"name": "Fei Long Zai Tian", "img": "assets/games/pussy888/20-fei-long-zai-tian.jpg"}, {"name": "FengShen", "img": "assets/games/pussy888/21-fengshen.jpg"}, {"name": "FootBall Fans", "img": "assets/games/pussy888/22-football-fans.jpg"}, {"name": "FootBallRult", "img": "assets/games/pussy888/23-footballrult.jpg"}, {"name": "Fortune", "img": "assets/games/pussy888/24-fortune.jpg"}, {"name": "Fortune Of The Fox", "img": "assets/games/pussy888/25-fortune-of-the-fox.jpg"}, {"name": "FortunePanda", "img": "assets/games/pussy888/26-fortunepanda.jpg"}, {"name": "Funky Fruits", "img": "assets/games/pussy888/27-funky-fruits.jpg"}, {"name": "Garden", "img": "assets/games/pussy888/28-garden.jpg"}, {"name": "Geisha", "img": "assets/games/pussy888/29-geisha.jpg"}, {"name": "Girls", "img": "assets/games/pussy888/30-girls.jpg"}]};
 
@@ -265,62 +283,22 @@ function refreshHourly(){
 refreshHourly();
 setInterval(refreshHourly,60000);
 
-const slides=[...document.querySelectorAll('.hero-slide')];
-const dots=[...document.querySelectorAll('.dot')];
-let current=0,timer;
-function show(i){
- current=(i+slides.length)%slides.length;
- slides.forEach((s,n)=>s.classList.toggle('active',n===current));
- dots.forEach((d,n)=>d.classList.toggle('active',n===current));
+const heroSlides=[...document.querySelectorAll('.hero-slide')];
+const heroDots=[...document.querySelectorAll('.hero-dot')];
+let heroIndex=0, heroTimer;
+function showHero(i){
+  heroIndex=(i+heroSlides.length)%heroSlides.length;
+  heroSlides.forEach((s,n)=>s.classList.toggle('active',n===heroIndex));
+  heroDots.forEach((d,n)=>d.classList.toggle('active',n===heroIndex));
 }
-function auto(){clearInterval(timer);timer=setInterval(()=>show(current+1),6000)}
-document.querySelector('.next').onclick=()=>{show(current+1);auto()};
-document.querySelector('.prev').onclick=()=>{show(current-1);auto()};
-dots.forEach((d,i)=>d.onclick=()=>{show(i);auto()});
-auto();
-
-const galleryImages=[
-  "assets/promos/promo1.png",
-  "assets/promos/promo2.png",
-  "assets/promos/promo3.png"
-];
-let galleryIndex=0;
-const galleryModal=document.getElementById("galleryModal");
-const galleryImg=document.getElementById("galleryImg");
-const galleryCount=document.getElementById("galleryCount");
-function renderGallery(){
-  galleryImg.src=galleryImages[galleryIndex];
-  galleryCount.textContent=(galleryIndex+1)+" / "+galleryImages.length;
+function autoHero(){
+  clearInterval(heroTimer);
+  heroTimer=setInterval(()=>showHero(heroIndex+1),6000);
 }
-document.getElementById("openGallery").addEventListener("click",()=>{
-  galleryIndex=0; renderGallery();
-  galleryModal.classList.add("open");
-  galleryModal.setAttribute("aria-hidden","false");
-});
-document.getElementById("closeGallery").addEventListener("click",()=>{
-  galleryModal.classList.remove("open");
-  galleryModal.setAttribute("aria-hidden","true");
-});
-document.getElementById("galleryPrev").addEventListener("click",()=>{
-  galleryIndex=(galleryIndex-1+galleryImages.length)%galleryImages.length; renderGallery();
-});
-document.getElementById("galleryNext").addEventListener("click",()=>{
-  galleryIndex=(galleryIndex+1)%galleryImages.length; renderGallery();
-});
-galleryModal.addEventListener("click",(e)=>{
-  if(e.target===galleryModal){
-    galleryModal.classList.remove("open");
-    galleryModal.setAttribute("aria-hidden","true");
-  }
-});
-document.addEventListener("keydown",(e)=>{
-  if(!galleryModal.classList.contains("open")) return;
-  if(e.key==="Escape") document.getElementById("closeGallery").click();
-  if(e.key==="ArrowLeft") document.getElementById("galleryPrev").click();
-  if(e.key==="ArrowRight") document.getElementById("galleryNext").click();
-});
-
-
-
+document.querySelector('.hero-next').onclick=()=>{showHero(heroIndex+1);autoHero()};
+document.querySelector('.hero-prev').onclick=()=>{showHero(heroIndex-1);autoHero()};
+heroDots.forEach((d,i)=>d.onclick=()=>{showHero(i);autoHero()});
+autoHero();
 </script>
-</body></html>
+</body>
+</html>
